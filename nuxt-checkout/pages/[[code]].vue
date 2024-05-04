@@ -89,6 +89,8 @@
 <script setup lang="ts">
   import axios from "axios";
   import {reactive} from "vue";
+  import {useClientStripe} from "#imports";
+  import {loadStripe} from "@stripe/stripe-js";
   const route = useRoute();
 
   const {data} = useAsyncData(async () => {
@@ -121,7 +123,7 @@
       }
   )
 
-  const stripe = await useClientStripe();
+  const stripe = await loadStripe(process.env.STRIPE_PK);
 
     const submit = async () =>  {
       const response = await axios.post('/orders', {
@@ -141,7 +143,7 @@
 
       await stripe.redirectToCheckout({
         sessionId: response.id
-      })
+      });
     }
 
     const total = () => {
