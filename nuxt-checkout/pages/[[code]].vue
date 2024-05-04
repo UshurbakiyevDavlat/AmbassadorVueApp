@@ -3,7 +3,7 @@
     <main>
       <div class="py-5 text-center">
         <h2>Welcome</h2>
-        <p class="lead">{{ data.user.first_name }} {{ data.user.last_name }} has invited you to buy these products!</p>
+        <p class="lead">{{ data?.user.first_name }} {{ data?.user.last_name }} has invited you to buy these products!</p>
       </div>
 
       <div class="row g-5">
@@ -12,7 +12,7 @@
             <span class="text-primary">Products</span>
           </h4>
           <ul class="list-group mb-3">
-            <template v-for="product in data.products">
+            <template v-for="product in data?.products">
               <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
                   <h6 class="my-0">{{ product.title }}</h6>
@@ -133,7 +133,7 @@
         city: inputModel.city,
         zip: inputModel.zip,
         code: route.params.code,
-        products: data.value.products.map((p: any) => ({
+        products: data.value?.products.map((p: any) => ({
           product_id: p.id,
           quantity: data.value.quantities[p.id]
         }))
@@ -145,7 +145,7 @@
     }
 
     const total = () => {
-      return data.value.products.reduce((s: number, p: any) => {
+      return data.value?.products.reduce((s: number, p: any) => {
         return s + p.price * data.value.quantities[p.id];
       }, 0);
   }
