@@ -151,3 +151,8 @@
   }
 </script>
 
+<style scoped>
+.quantity {
+  width: 65px;
+}
+</style>
