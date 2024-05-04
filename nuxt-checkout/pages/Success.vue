@@ -13,8 +13,10 @@
 export default {
   name: "Success",
   async mounted() {
-    const {data} = await this.$axios.post('orders/confirm', {
-      source: this.$route.query.source
+    const route = useRoute();
+
+    const {data} = await axios.post('orders/confirm', {
+      source: route.query.source
     });
 
     console.log(data);
