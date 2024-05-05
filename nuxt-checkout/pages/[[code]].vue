@@ -123,7 +123,7 @@
       }
   )
 
-  const stripe = await loadStripe(process.env.STRIPE_PK);
+  const stripe = await useClientStripe();
 
     const submit = async () =>  {
       const response = await axios.post('/orders', {
