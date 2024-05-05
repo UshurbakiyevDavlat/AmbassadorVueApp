@@ -18,6 +18,7 @@ export default {
   async mounted() {
     const route = useRoute();
 
+    //todo чет не работает
     const {data} = await axios('http://localhost:8000/api/checkout/orders/confirm', {
       source: route.query.source
     });
