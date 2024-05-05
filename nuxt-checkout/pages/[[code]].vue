@@ -152,6 +152,7 @@
   }
 </script>
 
+<!--TODO Чет если стили убираю здесь, крашится-->
 <style scoped>
 .quantity {
   width: 65px;
