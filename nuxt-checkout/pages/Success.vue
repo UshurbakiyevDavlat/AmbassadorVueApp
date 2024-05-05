@@ -11,14 +11,14 @@
 
 <script>
 
-import {post} from "axios";
+import axios from "axios";
 
 export default {
   name: "Success",
   async mounted() {
     const route = useRoute();
 
-    const {data} = await post('/orders/confirm', {
+    const {data} = await axios('http://localhost:8000/api/checkout/orders/confirm', {
       source: route.query.source
     });
 
