@@ -10,12 +10,15 @@
 </template>
 
 <script>
+
+import {post} from "axios";
+
 export default {
   name: "Success",
   async mounted() {
     const route = useRoute();
 
-    const {data} = await axios.post('orders/confirm', {
+    const {data} = await post('/orders/confirm', {
       source: route.query.source
     });
 

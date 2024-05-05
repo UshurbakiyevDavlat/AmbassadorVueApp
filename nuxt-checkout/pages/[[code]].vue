@@ -87,10 +87,11 @@
 </template>
 
 <script setup lang="ts">
-  import axios from "axios";
+
   import {reactive} from "vue";
-  import {useClientStripe} from "#imports";
+  import axios from "axios";
   import {loadStripe} from "@stripe/stripe-js";
+
   const route = useRoute();
 
   const {data} = useAsyncData(async () => {
@@ -123,10 +124,8 @@
       }
   )
 
-  const stripe = await useClientStripe();
-
     const submit = async () =>  {
-      const response = await axios.post('/orders', {
+      const response = await axios.post(`http://localhost:8000/api/checkout/orders`, { // TODO почему то не работает ивент хендлер и даже энв
         first_name: inputModel.first_name,
         last_name: inputModel.last_name,
         email: inputModel.email,
@@ -141,9 +140,9 @@
         }))
       })
 
-      await stripe.redirectToCheckout({
-        sessionId: response.id
-      });
+      //TODO В итоге не заработал почему то stripe-next пришлось через нативную либу и эндв не робит почему-то
+      const stripe = await loadStripe('pk_test_51PCg44Kjxe7OpAXX9u3V1eqvkR6HQ0FOXttQdV7lZvawohyn8kR5nEJ2SFfgU0evjwiBl3i1xnVCfuZvZU01w2FV00u3BLRgnF');
+      stripe.redirectToCheckout({ sessionId: response.data.id });
     }
 
     const total = () => {

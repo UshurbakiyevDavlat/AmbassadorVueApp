@@ -1,14 +1,17 @@
 // @ts-ignore
 export default defineNuxtConfig({
   devtools: {enabled: true},
+
   devServer: {
     port: 5000,
   },
+
   modules: ["@unlok-co/nuxt-stripe"],
+
   stripe: {
     // Server
     server: {
-      key: "sk_test_123",
+      key: '',
       options: {
         // your api options override for stripe server side
         // https://github.com/stripe/stripe-node?tab=readme-ov-file#configuration
@@ -21,6 +24,7 @@ export default defineNuxtConfig({
       options: {},
     },
   },
+
   css: [
     '/src/assets/css/main.css',
     'bootstrap/dist/css/bootstrap.min.css',
