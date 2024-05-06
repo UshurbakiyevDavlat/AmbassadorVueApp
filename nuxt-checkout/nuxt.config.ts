@@ -25,11 +25,6 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [
-    '/src/assets/css/main.css',
-    'bootstrap/dist/css/bootstrap.min.css',
-  ],
-
   script: [
     {
       src: 'bootstrap/dist/js/bootstrap.bundle.min.js'

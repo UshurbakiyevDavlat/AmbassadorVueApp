@@ -125,7 +125,7 @@
   )
 
     const submit = async () =>  {
-      const response = await axios.post(`http://localhost:8000/api/checkout/orders`, { // TODO почему то не работает ивент хендлер и даже энв
+      const response = await axios.post('/orders', {
         first_name: inputModel.first_name,
         last_name: inputModel.last_name,
         email: inputModel.email,
@@ -140,8 +140,7 @@
         }))
       })
 
-      //TODO В итоге не заработал почему то stripe-next пришлось через нативную либу и эндв не робит почему-то
-      const stripe = await loadStripe('pk_test_51PCg44Kjxe7OpAXX9u3V1eqvkR6HQ0FOXttQdV7lZvawohyn8kR5nEJ2SFfgU0evjwiBl3i1xnVCfuZvZU01w2FV00u3BLRgnF');
+      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK);
       stripe.redirectToCheckout({ sessionId: response.data.id });
     }
 
@@ -152,9 +151,3 @@
   }
 </script>
 
-<!--TODO Чет если стили убираю здесь, крашится-->
-<style scoped>
-.quantity {
-  width: 65px;
-}
-</style>
