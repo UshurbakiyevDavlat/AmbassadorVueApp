@@ -6,8 +6,6 @@ export default defineNuxtConfig({
     port: 5000,
   },
 
-  modules: ["@unlok-co/nuxt-stripe"],
-
   stripe: {
     // Server
     server: {
